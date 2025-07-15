@@ -1,4 +1,12 @@
+---
 import '../styles/global.css'; 
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import WhatTBM from '../components/WhatTBM.astro';
+import Activity from '../components/Activity.astro';
+import News from '../components/News.astro';
+import Footer from '../components/Footer.astro';
+---
 
 <!doctype html>
 <html lang="en">
@@ -9,8 +17,11 @@ import '../styles/global.css';
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
+
 	<body>
-		<slot />
+		<Navbar />
+	<slot />
+		<Footer />
 	</body>
 </html>
 

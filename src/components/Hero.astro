@@ -1,0 +1,24 @@
+---
+// src/components/Hero.astro
+
+// Komponen Hero tidak memerlukan JavaScript sisi klien secara default
+// kecuali Anda menambahkan interaktivitas yang kompleks di sini.
+---
+<section class="relative h-[80vh] flex items-center justify-center text-white overflow-hidden">
+  <img 
+    src="/images/hero.webp" 
+    alt="Anak-anak membaca buku di perpustakaan" 
+    class="absolute inset-0 w-full h-full object-cover brightness-50"
+  >
+  <div class="relative z-10 text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+      Taman Bacaan Masyarakat <br class="hidden sm:inline" /> Al-Bidayah
+    </h1>
+    <p class="text-lg md:text-2xl mb-8 max-w-2xl mx-auto">
+      Mewujudkan Masyarakat Literasi, Inspiratif, dan Berdaya
+    </p>
+    <a href="/about" class="bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out shadow-lg text-lg">
+      Tentang Kami
+    </a>
+  </div>
+</section>
