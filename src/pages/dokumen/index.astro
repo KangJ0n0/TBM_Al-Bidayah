@@ -1,0 +1,80 @@
+---
+// src/pages/dokumen/index.astro
+import Layout from '../../layouts/Layout.astro'; // Sesuaikan path ke Layout Anda
+import { documents, type DocumentItem } from '../../data/documents.ts'; 
+
+// Urutkan dokumen berdasarkan tanggal publikasi terbaru (opsional)
+const sortedDocuments = documents.sort((a, b) => {
+  const dateA = a.publishedDate ? new Date(a.publishedDate).getTime() : 0;
+  const dateB = b.publishedDate ? new Date(b.publishedDate).getTime() : 0;
+  return dateB - dateA; // Terbaru di atas
+});
+---
+
+<Layout title="Dokumen TBM | TBM Al-Bidayah">
+  <section class="py-16 md:py-24 bg-white text-gray-800">
+    <div class="container mx-auto px-4 md:px-6">
+      <h1 class="text-4xl md:text-5xl font-bold font-serif text-center mb-12 border-b-2 pb-2 border-red-600 inline-block mx-auto">
+        Dokumen Penting
+      </h1>
+      <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-12">
+        Temukan berbagai dokumen resmi, laporan, dan informasi penting terkait operasional dan kegiatan TBM Al-Bidayah.
+      </p>
+
+      {sortedDocuments.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sortedDocuments.map((doc) => (
+            <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col h-full transform hover:scale-102 transition duration-300">
+              {doc.thumbnail && (
+                <div class="mb-4 text-center">
+                  <img 
+                    src={doc.thumbnail} 
+                    alt={`Thumbnail ${doc.title}`} 
+                    class="w-full h-40 object-cover rounded-md shadow-sm mx-auto max-w-[200px]"
+                    loading="lazy" 
+                  />
+                </div>
+              )}
+              <h2 class="text-xl font-semibold mb-2 font-serif">{doc.title}</h2>
+              {doc.category && (
+                <p class="text-sm text-gray-500 mb-1">Kategori: {doc.category}</p>
+              )}
+              {doc.publishedDate && (
+                <p class="text-sm text-gray-500 mb-3">
+                  Terbit: {new Date(doc.publishedDate).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </p>
+              )}
+              {doc.description && (
+                <p class="text-gray-700 text-base mb-4 flex-1">
+                  {doc.description}
+                </p>
+              )}
+              
+              <div class="mt-auto">
+                <a 
+                  href={doc.fileUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 mr-2"
+                >
+                  Buka Dokumen
+                </a>
+                <a 
+                  href={doc.fileUrl} 
+                  download={doc.title.replace(/ /g, '-') + '.pdf'} 
+                  class="inline-block border border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-bold py-2 px-4 rounded-full transition duration-300"
+                >
+                  Unduh
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-xl text-gray-600 mt-12 py-10 bg-gray-50 rounded-lg shadow-md">
+          Belum ada dokumen yang tersedia saat ini.
+        </p>
+      )}
+    </div>
+  </section>
+</Layout>
