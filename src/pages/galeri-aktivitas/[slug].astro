@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { activities } from '../../data/activities.js';
+
+export async function getStaticPaths() {
+  return activities.map((activity) => ({
+    params: { slug: activity.slug },
+    props: { activity }
+  }));
+}
+
+const { activity } = Astro.props;
+---
+
+<Layout title={activity.title}>
+  <main class="py-16 md:py-24 bg-gray-50 text-gray-800">
+    <div class="container mx-auto px-4 md:px-6 max-w-4xl">
+      <h1 class="text-4xl md:text-5xl font-bold font-serif mb-6 text-red-700">{activity.title}</h1>
+      <p class="text-gray-600 text-sm mb-6">{activity.date}</p>
+      <div class="mb-8">
+        <Image src={activity.image} alt={activity.alt} width={800} height={450} class="rounded-lg shadow-lg" />
+      </div>
+      <p class="text-gray-800 text-lg leading-relaxed">{activity.fullText}</p>
+      <div class="mt-8">
+        <a href="/galeri-aktivitas" class="text-red-700 hover:text-red-500">&larr; Kembali ke Galeri</a>
+      </div>
+    </div>
+  </main>
+</Layout>

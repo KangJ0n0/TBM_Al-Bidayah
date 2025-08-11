@@ -1,0 +1,28 @@
+---
+import { documents } from '../../data/documents.js';
+
+export async function getStaticPaths() {
+  return documents.map((doc) => ({
+    params: { slug: doc.slug },
+    props: { doc }
+  }));
+}
+
+const { doc } = Astro.props;
+
+// Opsi 1: langsung redirect ke file PDF
+// Astro.redirect(doc.file);
+
+// Opsi 2: tampilkan embed PDF di halaman
+---
+
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{doc.title}</title>
+  </head>
+  <body style="margin:0;padding:0;">
+    <embed src={doc.file} type="application/pdf" width="100%" height="100%" style="min-height:100vh;" />
+  </body>
+</html>

@@ -1,43 +1,7 @@
 ---
-// src/pages/galeri-aktivitas/index.astro
-import Layout from '../../layouts/Layout.astro'; // Sesuaikan path jika Layout.astro ada di tempat lain
-import { Image } from 'astro:assets'; // Import komponen Image untuk optimasi
-
-// Placeholder data untuk contoh aktivitas. Nanti akan diganti dengan data dari content collection.
-const activities = [
-  {
-    slug: 'workshop-menulis-kreatif',
-    title: 'Workshop Menulis Kreatif Bersama Penulis Lokal',
-    date: '10 Juli 2025',
-    description: 'TBM Al-Bidayah sukses menyelenggarakan workshop menulis kreatif yang diikuti puluhan peserta antusias dari berbagai kalangan...',
-    image: '/src/assets/activity-workshop.png', // Pastikan gambar ini ada di src/assets/
-    alt: 'Peserta workshop menulis kreatif',
-  },
-  {
-    slug: 'peluncuran-buku-digital',
-    title: 'Peluncuran Buku Digital Terbaru Koleksi TBM',
-    date: '05 Juli 2025',
-    description: 'Koleksi buku digital TBM Al-Bidayah bertambah dengan hadirnya puluhan judul baru yang siap diakses oleh seluruh anggota...',
-    image: '/src/assets/activity-digital-book.png', // Pastikan gambar ini ada di src/assets/
-    alt: 'Peluncuran buku digital',
-  },
-  {
-    slug: 'kunjungan-perpustakaan-keliling',
-    title: 'Kunjungan Perpustakaan Keliling ke Desa Terpencil',
-    date: '28 Juni 2025',
-    description: 'Tim TBM Al-Bidayah melaksanakan program perpustakaan keliling, membawa semangat literasi ke desa-desa yang sulit terjangkau...',
-    image: '/src/assets/activity-mobile-library.png', // Pastikan gambar ini ada di src/assets/
-    alt: 'Perpustakaan keliling di desa',
-  },
-  {
-    slug: 'lomba-membaca-anak',
-    title: 'Lomba Membaca untuk Anak-Anak TBM',
-    date: '20 Juni 2025',
-    description: 'Kemeriahan lomba membaca yang diikuti oleh anak-anak anggota TBM Al-Bidayah, bertujuan meningkatkan minat baca sejak dini...',
-    image: '/src/assets/activity-reading-comp.png', // Pastikan gambar ini ada di src/assets/
-    alt: 'Anak-anak mengikuti lomba membaca',
-  },
-];
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { activities } from '../../data/activities';
 ---
 
 <Layout title="Galeri Aktivitas TBM Al-Bidayah">
