@@ -1,62 +1,20 @@
----
-// src/components/ProgramLayananSumberDaya.astro
----
 <section class="py-16 md:py-24 bg-gray-50 text-gray-800">
   <div class="container mx-auto px-4 md:px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 font-serif">Program, Layanan & Sumber Daya</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 font-serif">
+      Video Profil TBM Al-Bidayah
+    </h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-      {/* --- Bagian 01: PROGRAM TBM --- */}
-      {/* Tambahkan `h-full` ke div item agar tingginya sama dalam grid/flex */}
-      {/* Tambahkan `justify-between` ke flex container agar konten terdorong ke atas dan tombol ke bawah */}
-      <div class="flex flex-col gap-6 items-center md:items-start text-center md:text-left h-full"> 
-        <img 
-          src="images/1.png" 
-          alt="Program TBM" 
-          class="w-full h-64 object-cover rounded-lg shadow-xl mb-6"
-        >
-        {/* Tambahkan flex-1 agar konten antara gambar dan tombol mengisi ruang */}
-        <div class="flex-1"> 
-            <h3 class="text-2xl font-bold mb-3 font-serif">PROGRAM TBM</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              Layanan membaca dan peminjaman buku serta pengembangan berbagai literasi dasar dan turunannya. Kami menyelenggarakan
-              berbagai workshop, sesi bedah buku, dan kegiatan edukatif lainnya untuk semua kalangan.
-            </p>
-        </div>
-        <a href="/programs" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 mt-auto">Baca Lebih Lanjut</a> {/* <--- mt-auto DI SINI */}
-      </div>
-
-      {/* --- Bagian 02: SKEMA LAYANAN --- */}
-      <div class="flex flex-col gap-6 items-center md:items-start text-center md:text-left h-full"> 
-        <img 
-          src="images/2.png" 
-          alt="Skema Layanan" 
-          class="w-full h-64 object-cover rounded-lg shadow-xl mb-6"
-        >
-        <div class="flex-1"> 
-            <h3 class="text-2xl font-bold mb-3 font-serif">SKEMA LAYANAN</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              Layanan di tempat dan peminjaman buku serta aktivitas literasi lainnya. Kejar pembaca dalam bentuk Pojok Baca, Lapak Baca, Pustaka Keliling ditunjang dengan beragam program literasi.
-              Layanan digital seperti diskusi dan workshop daring, reading group daring, produksi konten literasi di Medsos.
-            </p>
-        </div>
-        <a href="/services" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 mt-auto">Baca Lebih Lanjut</a> {/* <--- mt-auto DI SINI */}
-      </div>
-
-      {/* --- Bagian 03: SUMBER DAYA TBM --- */}
-      <div class="flex flex-col gap-6 items-center md:items-start text-center md:text-left h-full"> 
-        <img 
-          src="images/3.png" 
-          alt="Sumber Daya TBM" 
-          class="w-full h-64 object-cover rounded-lg shadow-xl mb-6"
-        >
-        <div class="flex-1"> 
-            <h3 class="text-2xl font-bold mb-3 font-serif">SUMBER DAYA TBM</h3>
-            <p class="text-gray-600 mb-6 leading-relaxed">
-              TBM Al-Bidayah memiliki sumber daya dalam bentuk bahan pustaka, pengelola dan relawan, gagasan program, mitra, dan keterampilan. Kami selalu terbuka untuk kolaborasi.
-            </p>
-        </div>
-        <a href="/resources" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300 mt-auto">Baca Lebih Lanjut</a> {/* <--- mt-auto DI SINI */}
+    <!-- Wrapper video dengan max-width -->
+    <div class="max-w-3xl mx-auto">
+      <div class="relative w-full" style="padding-top: 56.25%;">
+        <iframe 
+          class="absolute top-0 left-0 w-full h-full rounded-lg shadow-xl"
+          src="https://www.youtube.com/embed/HRgMUNF05eQ?si=AfrVvpLKMG8F2BWl" 
+          title="Video Profil TBM Al-Bidayah"
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
       </div>
     </div>
   </div>
