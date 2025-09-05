@@ -11,6 +11,9 @@ export async function getStaticPaths() {
 }
 
 const { activity } = Astro.props;
+
+// Memproses teks untuk membuat paragraf baru
+const paragraphs = activity.fullText.split('\n\n');
 ---
 
 <Layout title={activity.title}>
@@ -21,7 +24,9 @@ const { activity } = Astro.props;
       <div class="mb-8">
         <Image src={activity.image} alt={activity.alt} width={800} height={450} class="rounded-lg shadow-lg" />
       </div>
-      <p class="text-gray-800 text-lg leading-relaxed">{activity.fullText}</p>
+      {paragraphs.map((p) => (
+        <p class="text-gray-800 text-lg leading-relaxed text-justify mb-4">{p}</p>
+      ))}
       <div class="mt-8">
         <a href="/galeri-aktivitas" class="text-red-700 hover:text-red-500">&larr; Kembali ke Galeri</a>
       </div>

@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { activities } from '../../data/activities';
+
+// Pindahkan deklarasi variabel ke dalam fungsi getStaticPaths
+export async function getStaticPaths({ paginate }) {
+  // Tentukan berapa banyak berita per halaman di sini
+  const POSTS_PER_PAGE = 9; 
+
+  // Urutkan aktivitas dari yang terbaru ke terlama berdasarkan tanggal
+  const sortedActivities = activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  // Gunakan fungsi paginate() bawaan Astro
+  return paginate(sortedActivities, { pageSize: POSTS_PER_PAGE });
+}
+
+// Dapatkan data halaman saat ini dari properti Astro
+const { page } = Astro.props;
+---
+
+<Layout title="Galeri Aktivitas TBM Al-Bidayah">
+  <main class="py-16 md:py-24 bg-gray-50 text-gray-800">
+    <div class="container mx-auto px-4 md:px-6">
+      <h1 class="text-4xl md:text-5xl font-bold font-serif text-center mb-6 text-red-700">Galeri Aktivitas</h1>
+      <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-12">
+        Jelajahi berbagai kegiatan dan momen berharga yang telah kami selenggarakan untuk memajukan literasi dan komunitas.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {page.data.map((activity) => (
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-102 transition duration-300 flex flex-col h-full">
+            <div class="relative w-full h-56 overflow-hidden">
+              <Image 
+                src={activity.image} 
+                alt={activity.alt} 
+                width={600}
+                height={350} 
+                class="object-cover w-full h-full"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h2 class="text-2xl font-bold mb-2 font-serif text-gray-900">{activity.title}</h2>
+              <p class="text-gray-600 text-sm mb-3">{activity.date}</p>
+              <p class="text-gray-700 text-base mb-4 flex-grow">{activity.description}</p>
+              <a href={`/galeri-aktivitas/${activity.slug}`} class="inline-block text-red-700 hover:text-red-500 font-medium mt-auto self-start">Baca Selengkapnya &rarr;</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 flex justify-center items-center space-x-4">
+        {page.url.prev ? (
+          <a href={page.url.prev} class="text-red-700 hover:text-red-500 font-medium">&larr; Sebelumnya</a>
+        ) : (
+          <span class="text-gray-400 font-medium">&larr; Sebelumnya</span>
+        )}
+        <span class="text-lg font-bold text-gray-900">
+          Halaman {page.currentPage} dari {page.lastPage}
+        </span>
+        {page.url.next ? (
+          <a href={page.url.next} class="text-red-700 hover:text-red-500 font-medium">Selanjutnya &rarr;</a>
+        ) : (
+          <span class="text-gray-400 font-medium">Selanjutnya &rarr;</span>
+        )}
+      </div>
+    </div>
+  </main>
+</Layout>
